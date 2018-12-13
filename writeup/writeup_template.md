@@ -49,7 +49,7 @@ Additionally, we used [this color picker](https://www.w3schools.com/colors/color
 
 In this particular project we are assuming that the colors of the lanes can either be white or yellow. So it's important to understand how can we detect those two colors.
 
-### Detecting yellow and white pixels
+### 1. Detecting yellow and white pixels
 
 We can operate on several color spaces in order to identify yellow pixels. After running some experiments, we found out that converting an image to **HSV** makes it really easy to identify yellow pixels and tune the required parameters.
 
@@ -73,7 +73,7 @@ Now you may be wondering why it's useful to identify yellow pixels or white pixe
 
 As you can see the result is very noisy. That's why we want to focus on the pixels that really matter.
 
-### Canny edge detection
+### 2. Canny edge detection
 
 [Canny edge detection](https://en.wikipedia.org/wiki/Canny_edge_detector) will allow us to find interesting edges in our image. However, in order to run the canny edge detection algorithm we first need to convert the image into gray scale, so we can compute the gradient easily. The second thing we need to do, is to apply a Gassian blur on the image in order to smooth edges.
 
@@ -81,6 +81,13 @@ This is what we get after running the Canny edge detection algorithm.
 
 [canny_image]: ./canny_image.png "Canny image"
 ![alt text][canny_image]
+
+### 3. Area of interest
+
+The Canny edge detection algorithm has successfully identified the edges we are interested at and some others (like some vehicles). Now, the next step is to remove the edges we are not interested at by selecting a region of interest. In our case, we decided to use something like an isosceles trapezoid.
+
+[region_of_interest]: ./region_of_interest.png "Region of interest image"
+![alt text][region_of_interest]
 
 ### 2. Identify potential shortcomings with your current pipeline
 
