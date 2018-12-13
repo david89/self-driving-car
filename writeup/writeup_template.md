@@ -13,9 +13,6 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[yellow_detection]: ./yellow_detection.png "Yellow detection experiment"
-[white_detection]: ./white_detection.png "White detection experiment"
-
 ---
 
 ## Background
@@ -56,13 +53,22 @@ In this particular project we are assuming that the colors of the lanes can eith
 
 We can operate on different color spaces in order to identify yellow pixels. After running some experiments, we found out that converting an image to HSV makes it really easy to identify yellow pixels and tune the required parameters.
 
+[yellow_detection]: ./yellow_detection.png "Yellow detection experiment"
 ![alt text][yellow_detection]
 
 ### Detecting white pixels
 
 Similarly to our previous point, we need to identify white pixels. In this case, we think the HSL color space makes it really easy to identify white colors, as the main parameter we care about is L (lightness).
 
+[white_detection]: ./white_detection.png "White detection experiment"
 ![alt text][white_detection]
+
+Now you may be wondering why it's useful to identify yellow pixels or white pixels in image for our pipeline. Without these two steps, this is what we get after running Canny edge detection algorithm:
+
+[bad_canny_example]: ./bad_canny_example.png "Bad Canny example"
+![alt text][bad_canny_example]
+
+As you can see the result is very noisy. That's why we want to focus on the pixels that really matter.
 
 ### 2. Identify potential shortcomings with your current pipeline
 
