@@ -89,6 +89,13 @@ The Canny edge detection algorithm has successfully identified the edges we are 
 [region_of_interest]: ./region_of_interest.png "Region of interest image"
 ![alt text][region_of_interest]
 
+### 4. Hough lines algorithm
+
+The [Hough lines algorithm](https://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/hough_lines/hough_lines.html) is used to identify straight lines in an image. Therefore, this algorithm is suitable for getting the lines that identify the lanes in a canny image.
+
+[hough_image]: ./hough_image.png "Hough image"
+![alt text][hough_image]
+
 ### 2. Identify potential shortcomings with your current pipeline
 
 One potential shortcoming would be what would happen when ... 
