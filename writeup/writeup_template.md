@@ -49,26 +49,31 @@ Additionally, we used [this color picker](https://www.w3schools.com/colors/color
 
 In this particular project we are assuming that the colors of the lanes can either be white or yellow. So it's important to understand how can we detect those two colors.
 
-### Detecting yellow pixels
+### Detecting yellow and white pixels
 
-We can operate on different color spaces in order to identify yellow pixels. After running some experiments, we found out that converting an image to HSV makes it really easy to identify yellow pixels and tune the required parameters.
+We can operate on several color spaces in order to identify yellow pixels. After running some experiments, we found out that converting an image to **HSV** makes it really easy to identify yellow pixels and tune the required parameters.
 
 [yellow_detection]: ./yellow_detection.png "Yellow detection experiment"
 ![alt text][yellow_detection]
 
-### Detecting white pixels
-
-Similarly to our previous point, we need to identify white pixels. In this case, we think the HSL color space makes it really easy to identify white colors, as the main parameter we care about is L (lightness).
+For white pixels we think the **HSL** color space makes it really easy to identify them, as the main parameter we care about is L (lightness).
 
 [white_detection]: ./white_detection.png "White detection experiment"
 ![alt text][white_detection]
 
-Now you may be wondering why it's useful to identify yellow pixels or white pixels in image for our pipeline. Without these two steps, this is what we get after running Canny edge detection algorithm:
+After detecting white and yellow pixels, we need to merge those two masks together.
+
+[white_and_yellow_detection]: ./white_and_yellow_detection.png "White and yellow detection experiment"
+![alt text][white_and_yellow_detection]
+
+Now you may be wondering why it's useful to identify yellow pixels or white pixels in image for our pipeline. Without these two steps, this is what we get after running our pipeline:
 
 [bad_canny_example]: ./bad_canny_example.png "Bad Canny example"
 ![alt text][bad_canny_example]
 
 As you can see the result is very noisy. That's why we want to focus on the pixels that really matter.
+
+### Combine the yellow and white pixels.
 
 ### 2. Identify potential shortcomings with your current pipeline
 
