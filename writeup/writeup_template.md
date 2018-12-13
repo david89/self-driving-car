@@ -96,6 +96,19 @@ The [Hough lines algorithm](https://docs.opencv.org/2.4/doc/tutorials/imgproc/im
 [hough_image]: ./hough_image.png "Hough image"
 ![alt text][hough_image]
 
+### 5. Merging Hough lines
+
+As you may have noticed, our transformed image contains multiple Hough lines. For the purpose of this project, we need to draw exactly one line for the left lane and exactly one line for the right line.
+
+Before getting into merging Hough lines, let's separate lines into two sets: one for the lines that belong to the left line, and some other lines for the right line. An easy way of accomplishing that is to separate lines by their slope: lines with a positive slope belong to the right line, and lines with a negative slope belong to the left side (that sounds counterintuitive, but remember that the top side corresponds to y = 0, and the bottom side is y = maximum y's coordinate). Additionally, we are going to exclude some lines if they have an infinite slope (vertical lines), if they have a very small slope (horizontal lines), or if they are noisy (by looking at where in the region of interest, the line is located at).
+
+After separating lines, we can run a linear regression model on each set of lines in order to find a representative line for each set. That's the only line we are going to draw (one for each side).
+
+Finally, we need to extend the segment from the bottom of the image all the way to the top of the region of interest.
+
+[processed_image]: ./processed_image.png "Processed image"
+![alt text][processed_image]
+
 ### 2. Identify potential shortcomings with your current pipeline
 
 One potential shortcoming would be what would happen when ... 
