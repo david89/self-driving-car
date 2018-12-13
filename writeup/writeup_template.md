@@ -109,14 +109,15 @@ Finally, we need to extend the segment from the bottom of the image all the way 
 [processed_image]: ./processed_image.png "Processed image"
 ![alt text][processed_image]
 
-### 2. Identify potential shortcomings with your current pipeline
+## Identify potential shortcomings with your current pipeline
 
-One potential shortcoming would be what would happen when ... 
+There are several issues with our current implementation:
+* We are assuming that lanes are going to be yellow or white. However, that may not be always the case.
+* If the angle of the camera changes, we would have to revisit the parameters we set up in our pipeline.
+* The code for this project is totally untested under low lightning circumstances. It's possible that we have to tune some parameters for dark images.
 
-Another shortcoming could be ...
+## Suggest possible improvements to your pipeline
 
-### 3. Suggest possible improvements to your pipeline
+One big improvement we could make to the video processing pipeline is to consider previous frames while drawing the line in a certain frame. That way we could discard some noisy lines with slopes that are very different from what we have seen so far.
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+Another big improvement to the pipeline would be trying to identify the angle of the steering wheel.
