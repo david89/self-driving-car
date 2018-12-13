@@ -73,7 +73,14 @@ Now you may be wondering why it's useful to identify yellow pixels or white pixe
 
 As you can see the result is very noisy. That's why we want to focus on the pixels that really matter.
 
-### Combine the yellow and white pixels.
+### Canny edge detection
+
+[Canny edge detection](https://en.wikipedia.org/wiki/Canny_edge_detector) will allow us to find interesting edges in our image. However, in order to run the canny edge detection algorithm we first need to convert the image into gray scale, so we can compute the gradient easily. The second thing we need to do, is to apply a Gassian blur on the image in order to smooth edges.
+
+This is what we get after running the Canny edge detection algorithm.
+
+[canny_image]: ./canny_image.png "Canny image"
+![alt text][canny_image]
 
 ### 2. Identify potential shortcomings with your current pipeline
 
